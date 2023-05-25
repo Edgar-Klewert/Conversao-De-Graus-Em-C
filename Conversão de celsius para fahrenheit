@@ -1,0 +1,41 @@
+#include <stdio.h>
+
+int main() {
+	system("color 0E");
+    FILE *Input, *Output;
+    char FileInput[100], FileOutput[100];
+    float Celsius;
+    float Fahrenheit;
+    
+    printf("Programa de conversao de de grau Celsius para Fahrenheit...\n");
+    printf("Selecione no arquivo de entrada onde contem o graus Celsius\n");
+    printf("Em seguida selecione o arquivo que queira a conversao em Fahrenheit\n\n");
+
+    printf("Digite o nome do arquivo de entrada: ");
+    scanf("%s", FileInput);
+    
+    printf("Digite o nome do arquivo de saída: ");
+    scanf("%s", FileOutput);
+    
+    Input = fopen(FileInput, "r");
+    if (Input == NULL) {
+        printf("Erro ao abrir o arquivo de entrada.\n");
+    }
+    
+    Output = fopen(FileOutput, "w");
+    if (Output == NULL) {
+        printf("Erro ao abrir o arquivo de saída.\n");
+    }
+    
+    while (fscanf(Input, "%f", &Celsius) == 1) {
+        Fahrenheit = (Celsius * 9 / 5) + 32;
+        fprintf(Output, "%.2f\n", Fahrenheit);
+    }
+    
+    fclose(Input);
+    fclose(Output);
+    
+    printf("Conversão concluída. Os resultados foram gravados no arquivo '%s'.\n", FileOutput);
+    
+    return 0;
+}
