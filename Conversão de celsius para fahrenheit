@@ -24,7 +24,7 @@ int main() {
     
     Output = fopen(FileOutput, "w");
     if (Output == NULL) {
-        printf("Erro ao abrir o arquivo de saída.\n");
+        printf("Erro ao abrir o arquivo de saida.\n");
     }
     
     while (fscanf(Input, "%f", &Celsius) == 1) {
